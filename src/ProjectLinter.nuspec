@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>ProjectLinter</id>
+    <version>$Version$</version>
+    <authors>G-Research</authors>
+    <owners>G-Research</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Linter to validate project files</description>
+    <developmentDependency>true</developmentDependency>
+  </metadata>
+  <files>
+    <file src="build\ProjectLinter.targets" target="build" />
+    <file src="build\net472\*.*" target="build/net472" />
+    <file src="build\net5.0\*.*" target="build/net5.0" />
+    <file src="build\net6.0\*.*" target="build/net6.0" />
+    <file src="build\net7.0\*.*" target="build/net7.0" />
+  </files>
+</package>

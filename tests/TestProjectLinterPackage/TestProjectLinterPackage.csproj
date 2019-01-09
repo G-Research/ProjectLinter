@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ProjectLinterSuppressions>XCopyValidator</ProjectLinterSuppressions>
+  </PropertyGroup>
+  
+  <Target Name="MarkAsValidationComplete" AfterTargets="Validate" >
+    <PropertyGroup>
+      <ValidationComplete>true</ValidationComplete>
+    </PropertyGroup>
+  </Target>
+  
+  <ItemGroup>
+    <PackageReference Include="ProjectLinter" Version="$(ProjectLinterNuGetPackageVersion)" >
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>build</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectLinterSuppressions Include="NoOldStyleProjects" />
+  </ItemGroup>
+
+  <Target Name="CheckValidationComplete" AfterTargets="Build">
+    <Message Text="NuGetPackageRoot = '$(NuGetPackageRoot)'" Importance="High" />
+  
+    <Error Condition="'$(ValidationComplete)' != 'true'" Text="Validation should have taken place as part of the build process." />
+  </Target>
+</Project>

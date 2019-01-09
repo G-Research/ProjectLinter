@@ -1,0 +1,17 @@
+//  Nerdbank.GitVersioning version.json
+//
+//  See https://github.com/AArnott/Nerdbank for details.
+ 
+{
+  // Manually update the major and minor versions here.
+  // Nerdbank.GitVersioning will automatically update the patch version - it is unlikely you want to specify it here.
+  "version": "0.2",
+
+  // Specifies that public releases come from master.
+  // Builds from all other branches will have a shortened commit SHA appended to their version numbers.
+  // Adding additional ref specs here may result in builds of different commits producing the same version numbers.
+  // Ensure you know what you are doing before adding any other ref specs here.
+  "publicReleaseRefSpec": [
+    "^refs/heads/master$"
+  ]
+}

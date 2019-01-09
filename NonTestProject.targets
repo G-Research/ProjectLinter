@@ -1,0 +1,10 @@
+<Project>
+  <Target Name="VSTest">
+    <Message Text="Skipping VSTest in '$(AssemblyName)' as this is not a test project" Importance="High" />
+  </Target>
+
+  <Target Name="PublishArtefact" DependsOnTargets="GetBuildVersion">
+    <Message Text="Attempting to publish $(MSBuildThisFileDirectory)artefacts/$(PackageId).$(NuGetPackageVersion).nupkg" Importance="High"/>
+    <Exec Command="dotnet tool run nuget-package-publisher -- $(MSBuildThisFileDirectory)artefacts/$(PackageId).$(NuGetPackageVersion).nupkg --nuget-repo $(DestinationNuGetRepo)" WorkingDirectory="$(MSBuildThisFileDirectory)"/>
+  </Target>
+</Project>

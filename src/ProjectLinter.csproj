@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net472;net5.0;net6.0;net7.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputPath>build\</OutputPath>
+    <NuspecFile>ProjectLinter.nuspec</NuspecFile>
+    <PackageId>ProjectLinter</PackageId>
+    <NoWarn>NETSDK1138;NU5127</NoWarn>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="Microsoft.Build" Version="[16.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[16.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[5.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <!--Part of the SDK-->
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Microsoft.Build" Version="[16.11.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[16.11.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[5.11.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <!--Part of the SDK-->
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.Build" Version="[17.2.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.2.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <!--Part of the SDK-->
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageReference Include="Microsoft.Build" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <!--Part of the SDK-->
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build/ProjectLinter.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="build/ProjectLinter.targets" />
+  </ItemGroup>
+  <!-- Required so that $version$ is set when we call the Pack target -->
+  <Target Name="SetNuspecPackageVersion" DependsOnTargets="GetBuildVersion" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <NuspecProperties>$(NuspecProperties);version=$(NuGetPackageVersion)</NuspecProperties>
+    </PropertyGroup>
+  </Target>
+</Project>

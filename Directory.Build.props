@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <Features>pdb-path-determinism</Features>
+    <PathMap>$(MSBuildThisFileDirectory)=E:\code\ProjectLinter</PathMap>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)artefacts</PackageOutputPath>
+    <ApplicationIcon>$(MSBuildThisFileDirectory)Xml.ico</ApplicationIcon>
+    <PackageIcon>Xml.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Xml.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Use GitVersioning for nuget packages -->
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.3.0">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyVersionInfo>false</GenerateAssemblyVersionInfo>
+  </PropertyGroup>
+
+  <Target Name="TestPackageReference" DependsOnTargets="GetBuildVersion" AfterTargets="Build">   
+
+    <Message Text="NuGetPacakgeRoot='$(NuGetPackageRoot)'. Deleting directory: '$(NuGetPackageRoot)/projectlinter'" Importance="High" />
+    
+    <!-- Delete old version of the ProjectLinter package -->
+    <RemoveDir Directories="$(NuGetPackageRoot)/projectlinter" />  
+    
+    <Message Text="ProjectLinterNuGetPackageVersion=$(Version)" Importance="High" />
+
+    <Exec Command="dotnet build /p:ProjectLinterNuGetPackageVersion=$(Version) ./TestProjectLinterPackage.csproj" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.NoTargets" Version="3.3.0" />
+  </ItemGroup>
+
+</Project>

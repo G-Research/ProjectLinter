@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+  </PropertyGroup>
+  
+  <Target Name="MarkAsValidationComplete" AfterTargets="Validate" >
+    <PropertyGroup>
+      <ValidationComplete>true</ValidationComplete>
+    </PropertyGroup>
+  </Target>
+  
+  <ItemGroup>
+    <PackageReference Include="ProjectLinter" Version="$(ProjectLinterNuGetPackageVersion)" />
+  </ItemGroup>
+  
+  <Target Name="CheckValidationComplete" AfterTargets="BeforeBuild">
+    <Message Text="NuGetPackageRoot = '$(NuGetPackageRoot)'" Importance="High" />
+  
+    <Error Condition="'$(ValidationComplete)' != 'true'" Text="Validation should have taken place as part of the build process." />
+  </Target>
+</Project>
