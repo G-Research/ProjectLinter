@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net472;net5.0;net6.0;net7.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <OutputPath>build\</OutputPath>
     <NuspecFile>ProjectLinter.nuspec</NuspecFile>
     <PackageId>ProjectLinter</PackageId>
