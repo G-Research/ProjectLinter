@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  check-format:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup .NET SDK v7.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Restore tool
+        run: dotnet tool restore
+      - name: Check format
+        run: dotnet tool run dotnet-format  -- --check
+  
+  ProjectLinterTests:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET SDK v7.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Test
+        run: dotnet test --configuration=Release
+
+  ProjectLinter:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id
+    needs: ProjectLinterTests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET SDK v7.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Pack
+        run: dotnet pack --configuration=Release
+      - name: Upload NuGet package artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuget-packages
+          path: artefacts/*.nupkg
+
+  # Publish NuGet packages when a tag is pushed.
+  # Build needs to succeed first, including having a tag name that matches the version number.
+  publish-release:
+    if: ${{ !github.event.repository.fork && startsWith(github.ref, 'refs/tags/v') }}
+    needs: ProjectLinter
+    runs-on: windows-latest
+    steps:
+      - name: Download NuGet package artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: nuget-packages
+          path: artefacts
+      - name: Publish to NuGet
+        run: |
+          if ("${{ github.ref }}" -like "refs/tags/v*") {
+              $tag = "${{ github.ref }}".SubString(11)
+              $expectedProjectLinterFile = "artefacts/ProjectLinter.$tag.nupkg"
+
+              # Check whether the tag and the package version match together
+              if (-not (Test-Path -Path $expectedProjectLinterFile)) {
+                  echo "::error ::Expected file $expectedProjectLinterFile doesn't exist"
+                  exit 1
+              }
+              dotnet nuget push $expectedProjectLinterFile --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          }
