@@ -5,10 +5,13 @@
     <PathMap>$(MSBuildThisFileDirectory)=E:\code\ProjectLinter</PathMap>
     <PackageOutputPath>$(MSBuildThisFileDirectory)artefacts</PackageOutputPath>
     <ApplicationIcon>$(MSBuildThisFileDirectory)Xml.ico</ApplicationIcon>
+    <Copyright>Copyright 2020-$([System.DateTime]::Now.ToString('yyyy')) G-Research Limited</Copyright>
     <PackageIcon>Xml.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Xml.png" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath=""/>
   </ItemGroup>
   <ItemGroup>
     <!-- Use GitVersioning for nuget packages -->

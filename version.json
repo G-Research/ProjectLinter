@@ -12,6 +12,7 @@
   // Adding additional ref specs here may result in builds of different commits producing the same version numbers.
   // Ensure you know what you are doing before adding any other ref specs here.
   "publicReleaseRefSpec": [
-    "^refs/heads/master$"
+    "^refs/heads/main$",
+    "^refs/tags/v\\d+\\.\\d+" // we also release tags starting with vN.N
   ]
 }

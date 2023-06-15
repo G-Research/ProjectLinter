@@ -8,6 +8,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Linter to validate project files</description>
     <developmentDependency>true</developmentDependency>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <PackageReleaseNotes>https://github.com/G-Research/ProjectLinter/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/G-Research/ProjectLinter</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </metadata>
   <files>
     <file src="build\ProjectLinter.targets" target="build" />
