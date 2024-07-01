@@ -7,27 +7,27 @@
     <NoWarn>NETSDK1138;NU5127</NoWarn>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-    <PackageReference Include="Microsoft.Build" Version="[16.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[16.3.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="NuGet.Versioning" Version="[6.9.1]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.10.1]" PrivateAssets="All" ExcludeAssets="runtime" />
     <!--Part of the SDK-->
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <PackageReference Include="Microsoft.Build" Version="[16.11.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[16.11.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="NuGet.Versioning" Version="[6.9.1]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.10.1]" PrivateAssets="All" ExcludeAssets="runtime" />
     <!--Part of the SDK-->
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <PackageReference Include="Microsoft.Build" Version="[17.2.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.2.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="NuGet.Versioning" Version="[6.9.1]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.10.1]" PrivateAssets="All" ExcludeAssets="runtime" />
     <!--Part of the SDK-->
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <PackageReference Include="Microsoft.Build" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="[17.4.0]" PrivateAssets="All" ExcludeAssets="runtime" />
-    <PackageReference Include="NuGet.Versioning" Version="[6.9.1]" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NuGet.Versioning" Version="[6.10.1]" PrivateAssets="All" ExcludeAssets="runtime" />
     <!--Part of the SDK-->
   </ItemGroup>
   <ItemGroup>
