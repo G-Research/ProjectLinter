@@ -44,3 +44,7 @@ To skip particular validators for a project add their Ids (separated by ;) to th
   </PropertyGroup>
 </Project>
 ```
+
+## Security
+
+Please see our [security policy](https://github.com/G-Research/ProjectLinter/blob/main/SECURITY.md) for details on reporting security vulnerabilities.
