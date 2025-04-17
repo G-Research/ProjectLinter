@@ -36,13 +36,13 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 ### Issues
 
-Please report issues in the [Issues](https://github.com/G-Research/ProjectLinter/issues) section, using the bug report template.
+Please report issues in the [Issues](https://github.com/G-Research/ProjectLinter/issues) section, using the [issue template](.github/ISSUE_TEMPLATE/bug_report_form.yaml).
 
 If you find a bug or a potential issue:
 
 - Check the [Issues](https://github.com/G-Research/ProjectLinter/issues) to see if it has already been reported
 
-- If it has not been reported, create a new issue, using the bug report template
+- If it has not been reported, create a new issue, using the [issue template](.github/ISSUE_TEMPLATE/bug_report_form.yaml).
 
 - Please provide: 
   - A clear and descriptive title
