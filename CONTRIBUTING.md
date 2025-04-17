@@ -36,12 +36,14 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 ### Issues
 
-Please report issues in the [Issues](https://github.com/G-Research/ProjectLinter/issues) section.
+Please report issues in the [Issues](https://github.com/G-Research/ProjectLinter/issues) section, using the bug report template.
 
 If you find a bug or a potential issue:
 
 - Check the [Issues](https://github.com/G-Research/ProjectLinter/issues) to see if it has already been reported
-- If it has not been reported, create a new issue
+
+- If it has not been reported, create a new issue, using the bug report template
+
 - Please provide: 
   - A clear and descriptive title
   - A detailed description of the problem
@@ -118,7 +120,6 @@ We welcome all forms of community participation! Here's how you can get involved
 ### Channels
 - GitHub Issues: For bug reports and feature requests
 - Pull Requests: For code changes and reviews
-- Discussions: For general questions and community engagement
 
 ## License
 
